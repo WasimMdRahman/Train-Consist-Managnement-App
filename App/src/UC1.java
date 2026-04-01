@@ -1,33 +1,29 @@
-import java.util.LinkedHashSet;
+import java.util.HashMap;
+import java.util.Map;
 
-public class TrainLinkedHashSetSystem {
+public class BogieCapacitySystem {
     public static void main(String[] args) {
 
-        // Create LinkedHashSet for train formation
-        LinkedHashSet<String> train = new LinkedHashSet<>();
+        // Create HashMap for bogie-capacity mapping
+        HashMap<String, Integer> bogieCapacity = new HashMap<>();
 
-        // Add bogies
-        System.out.println("Adding bogies...");
+        // Insert bogie capacities
+        System.out.println("Adding bogie capacities...");
 
-        addBogie(train, "Engine");
-        addBogie(train, "Sleeper");
-        addBogie(train, "Cargo");
-        addBogie(train, "Guard");
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 78);
+        bogieCapacity.put("First Class", 24);
 
-        // Attempt duplicate
-        addBogie(train, "Sleeper");
+        // Display all bogie capacities using entrySet()
+        System.out.println("\nBogie Capacity Details:");
 
-        // Display final formation
-        System.out.println("\nFinal Train Formation (Order Preserved):");
-        System.out.println(train);
-    }
-
-    // Method to handle insertion
-    public static void addBogie(LinkedHashSet<String> set, String bogie) {
-        if (set.add(bogie)) {
-            System.out.println(bogie + " added successfully.");
-        } else {
-            System.out.println("Duplicate bogie '" + bogie + "' ignored!");
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println("Bogie: " + entry.getKey() +
+                    " | Capacity: " + entry.getValue());
         }
+
+        // Example: Fast lookup
+        System.out.println("\nCapacity of Sleeper: " +
+                bogieCapacity.get("Sleeper"));
     }
 }
