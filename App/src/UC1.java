@@ -1,36 +1,33 @@
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 
-public class TrainLinkedListSystem {
+public class TrainLinkedHashSetSystem {
     public static void main(String[] args) {
 
-        // Create LinkedList for train consist
-        LinkedList<String> train = new LinkedList<>();
+        // Create LinkedHashSet for train formation
+        LinkedHashSet<String> train = new LinkedHashSet<>();
 
         // Add bogies
-        train.add("Engine");
-        train.add("Sleeper");
-        train.add("AC");
-        train.add("Cargo");
-        train.add("Guard");
+        System.out.println("Adding bogies...");
 
-        System.out.println("Initial Train Consist:");
+        addBogie(train, "Engine");
+        addBogie(train, "Sleeper");
+        addBogie(train, "Cargo");
+        addBogie(train, "Guard");
+
+        // Attempt duplicate
+        addBogie(train, "Sleeper");
+
+        // Display final formation
+        System.out.println("\nFinal Train Formation (Order Preserved):");
         System.out.println(train);
+    }
 
-        // Insert Pantry Car at position 2 (index 1)
-        train.add(1, "Pantry Car");
-
-        System.out.println("\nAfter inserting Pantry Car at position 2:");
-        System.out.println(train);
-
-        // Remove first and last bogie
-        train.removeFirst();
-        train.removeLast();
-
-        System.out.println("\nAfter removing first and last bogie:");
-        System.out.println(train);
-
-        // Final display
-        System.out.println("\nFinal Train Consist:");
-        System.out.println(train);
+    // Method to handle insertion
+    public static void addBogie(LinkedHashSet<String> set, String bogie) {
+        if (set.add(bogie)) {
+            System.out.println(bogie + " added successfully.");
+        } else {
+            System.out.println("Duplicate bogie '" + bogie + "' ignored!");
+        }
     }
 }
