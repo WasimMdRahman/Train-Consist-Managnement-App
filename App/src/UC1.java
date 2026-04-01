@@ -1,35 +1,32 @@
-import java.util.ArrayList;
+import java.util.HashSet;
 
-public class TrainBogieArrayList {
+public class UniqueBogieSystem {
     public static void main(String[] args) {
 
-        // Create ArrayList for passenger bogies
-        ArrayList<String> bogies = new ArrayList<>();
+        // Create HashSet for bogie IDs
+        HashSet<Integer> bogieIds = new HashSet<>();
 
-        // Add bogies
-        bogies.add("Sleeper");
-        bogies.add("AC Chair");
-        bogies.add("First Class");
+        // Add bogie IDs
+        System.out.println("Adding Bogie IDs...");
 
-        // Display bogies after insertion
-        System.out.println("Bogies after addition:");
-        System.out.println(bogies);
+        addBogie(bogieIds, 101);
+        addBogie(bogieIds, 102);
+        addBogie(bogieIds, 103);
 
-        // Remove one bogie (AC Chair)
-        bogies.remove("AC Chair");
+        // Attempt to add duplicate
+        addBogie(bogieIds, 102);
 
-        System.out.println("\nAfter removing AC Chair:");
-        System.out.println(bogies);
+        // Display unique bogie IDs
+        System.out.println("\nFinal Unique Bogie IDs:");
+        System.out.println(bogieIds);
+    }
 
-        // Check if Sleeper exists
-        if (bogies.contains("Sleeper")) {
-            System.out.println("\nSleeper bogie exists in the train.");
+    // Method to add bogie with duplicate check
+    public static void addBogie(HashSet<Integer> set, int id) {
+        if (set.add(id)) {
+            System.out.println("Bogie ID " + id + " added successfully.");
         } else {
-            System.out.println("\nSleeper bogie does not exist.");
+            System.out.println("Duplicate Bogie ID " + id + " ignored!");
         }
-
-        // Final list state
-        System.out.println("\nFinal Bogie List:");
-        System.out.println(bogies);
     }
 }
